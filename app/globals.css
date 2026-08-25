@@ -1,26 +1,197 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* FONT DEFINITIONS & MODERN REFINED CSS VARIABLES */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+    -webkit-font-smoothing: antialiased;
+  }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  body {
+    background-color: #09090b;
+    color: #f4f4f5;
+    font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    overflow-x: hidden;
+    transition: background-color 0.4s ease, color 0.4s ease;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ==========================================================================
+   REFINED DECENT THEME STYLES (No Festival Lights, Sophisticated Single Accent)
+   ========================================================================== */
+
+/* 1. CHARCOAL & WARM PLATINUM */
+[data-theme="charcoal"] {
+  --bg-primary: #09090b;
+  --text-primary: #f4f4f5;
+  --accent-color: #e4e4e7;
+  --card-bg: rgba(18, 18, 22, 0.75);
+  --card-border: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="charcoal"] body {
+  background-color: #09090b;
+  color: #f4f4f5;
+}
+
+[data-theme="charcoal"] .theme-card {
+  background: rgba(24, 24, 27, 0.65);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+[data-theme="charcoal"] .theme-card:hover {
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="charcoal"] .theme-heading {
+  color: #ffffff;
+  background: linear-gradient(135deg, #ffffff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="charcoal"] .theme-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f4f4f5;
+}
+
+/* 2. ARCHITECTURAL SAGE */
+[data-theme="sage"] {
+  --bg-primary: #0b0f19;
+  --text-primary: #f8fafc;
+  --accent-color: #10b981;
+}
+
+[data-theme="sage"] body {
+  background-color: #0b0f19;
+  color: #f8fafc;
+}
+
+[data-theme="sage"] .theme-card {
+  background: rgba(15, 23, 42, 0.65);
+  border: 1px solid rgba(16, 185, 129, 0.15);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="sage"] .theme-card:hover {
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(16, 185, 129, 0.1);
+}
+
+[data-theme="sage"] .theme-heading {
+  background: linear-gradient(135deg, #ffffff 0%, #34d399 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="sage"] .theme-pill {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  color: #34d399;
+}
+
+/* 3. MIDNIGHT AMBER */
+[data-theme="midnight"] {
+  --bg-primary: #0f172a;
+  --text-primary: #f8fafc;
+  --accent-color: #d97706;
+}
+
+[data-theme="midnight"] body {
+  background-color: #0f172a;
+  color: #f8fafc;
+}
+
+[data-theme="midnight"] .theme-card {
+  background: rgba(30, 41, 59, 0.65);
+  border: 1px solid rgba(217, 119, 6, 0.15);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="midnight"] .theme-card:hover {
+  border-color: rgba(217, 119, 6, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(217, 119, 6, 0.1);
+}
+
+[data-theme="midnight"] .theme-heading {
+  background: linear-gradient(135deg, #ffffff 0%, #fbbf24 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+[data-theme="midnight"] .theme-pill {
+  background: rgba(217, 119, 6, 0.08);
+  border: 1px solid rgba(217, 119, 6, 0.25);
+  color: #fbbf24;
+}
+
+/* 4. STUDIO MONO */
+[data-theme="monochrome"] {
+  --bg-primary: #050505;
+  --text-primary: #ffffff;
+  --accent-color: #ffffff;
+}
+
+[data-theme="monochrome"] body {
+  background-color: #050505;
+  color: #ffffff;
+}
+
+[data-theme="monochrome"] .theme-card {
+  background: rgba(18, 18, 18, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+}
+
+[data-theme="monochrome"] .theme-card:hover {
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 0 10px 30px -10px rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="monochrome"] .theme-heading {
+  color: #ffffff;
+  -webkit-text-fill-color: #ffffff;
+  background: none;
+}
+
+[data-theme="monochrome"] .theme-pill {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   MINIMALIST SCROLLBAR & UTILITY ANIMATIONS
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #09090b;
+}
+::-webkit-scrollbar-thumb {
+  background: #27272a;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #3f3f46;
+}
+
+@keyframes spinSlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spinSlow 12s linear infinite;
 }

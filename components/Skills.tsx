@@ -168,7 +168,7 @@ export default function Skills() {
             ))
           ) : (
             <div className="col-span-2 text-center py-12 theme-card rounded-3xl font-mono text-zinc-500">
-              No skills found matching "{searchQuery}"
+              No skills found matching &quot;{searchQuery}&quot;
             </div>
           )}
         </div>

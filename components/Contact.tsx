@@ -77,7 +77,7 @@ export default function Contact() {
             <span>Get In Touch</span>
           </div>
           <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
-            Let's Start a <span className="theme-heading">Conversation</span>
+            Let&apos;s Start a <span className="theme-heading">Conversation</span>
           </h2>
           <p className="text-zinc-400 font-light text-base sm:text-lg leading-relaxed">
             Have an engineering role or internship opportunity? Reach out directly or send a message below.

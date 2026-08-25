@@ -1,6 +1,5 @@
 "use client";
 
-import { PORTFOLIO_DATA } from '@/data/portfolio';
 import { User, GraduationCap, Code, Cloud, Terminal, CheckCircle2 } from 'lucide-react';
 
 export default function About() {

@@ -20,7 +20,7 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { theme, activeConfig, toggleTerminal } = useTheme();
+  const { theme, toggleTerminal } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {

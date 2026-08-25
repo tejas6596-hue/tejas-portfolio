@@ -20,7 +20,7 @@ export default function InteractiveTerminal() {
       id: 'init-1',
       command: 'welcome',
       output: (
-        <div className="space-y-1 text-xs font-mono">
+        <div className="space-y-1 text-[11px] sm:text-xs font-mono">
           <p className="text-zinc-200 font-bold">
             TEJAS K // VISITOR COMMAND INTERFACE [v2.5.0]
           </p>
@@ -60,7 +60,7 @@ export default function InteractiveTerminal() {
       return;
     } else if (cleanCmd === 'help') {
       outputNode = (
-        <div className="space-y-1 text-xs font-mono">
+        <div className="space-y-1 text-[11px] sm:text-xs font-mono">
           <p className="text-zinc-300 font-bold mb-1 uppercase tracking-wider">AVAILABLE COMMANDS:</p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-1 text-zinc-400">
             <div>
@@ -95,7 +95,7 @@ export default function InteractiveTerminal() {
       );
     } else if (cleanCmd === 'skills') {
       outputNode = (
-        <div className="space-y-2 text-xs font-mono">
+        <div className="space-y-2 text-[11px] sm:text-xs font-mono">
           {PORTFOLIO_DATA.skillCategories.map((cat, idx) => (
             <div key={idx}>
               <p className="text-zinc-300 font-bold uppercase">{cat.name}:</p>
@@ -106,21 +106,21 @@ export default function InteractiveTerminal() {
       );
     } else if (cleanCmd === 'projects') {
       outputNode = (
-        <div className="space-y-2 text-xs font-mono">
+        <div className="space-y-2 text-[11px] sm:text-xs font-mono">
           {PORTFOLIO_DATA.projects.map((p, idx) => (
             <div key={idx} className="border-l-2 border-zinc-700 pl-2">
               <p className="text-zinc-200 font-bold">
                 {idx + 1}. {p.title} <span className="text-zinc-500">[{p.category}]</span>
               </p>
               <p className="text-zinc-400">{p.tagline}</p>
-              <p className="text-zinc-400 text-[11px]">Stack: {p.techStack.join(', ')}</p>
+              <p className="text-zinc-400 text-[10px] sm:text-[11px]">Stack: {p.techStack.join(', ')}</p>
             </div>
           ))}
         </div>
       );
     } else if (cleanCmd === 'contact') {
       outputNode = (
-        <div className="space-y-1 text-xs font-mono text-zinc-300">
+        <div className="space-y-1 text-[11px] sm:text-xs font-mono text-zinc-300">
           <p>
             <span className="text-zinc-400 font-bold">Email:</span> {PORTFOLIO_DATA.personal.email}
           </p>
@@ -134,14 +134,14 @@ export default function InteractiveTerminal() {
       );
     } else if (cleanCmd === 'bio') {
       outputNode = (
-        <div className="text-xs font-mono text-zinc-300 leading-relaxed">
+        <div className="text-[11px] sm:text-xs font-mono text-zinc-300 leading-relaxed">
           <p className="text-zinc-100 font-bold mb-1">{PORTFOLIO_DATA.personal.name} — {PORTFOLIO_DATA.personal.role}</p>
           <p>{PORTFOLIO_DATA.personal.bio}</p>
         </div>
       );
     } else if (cleanCmd === 'socials') {
       outputNode = (
-        <div className="space-y-1 text-xs font-mono text-zinc-300">
+        <div className="space-y-1 text-[11px] sm:text-xs font-mono text-zinc-300">
           <p>
             GitHub: <a href={PORTFOLIO_DATA.personal.social.github} target="_blank" rel="noreferrer" className="underline hover:text-white">{PORTFOLIO_DATA.personal.social.github}</a>
           </p>
@@ -156,13 +156,13 @@ export default function InteractiveTerminal() {
       if (targetTheme && THEME_CONFIGS[targetTheme]) {
         setTheme(targetTheme);
         outputNode = (
-          <p className="text-zinc-200 text-xs font-mono font-bold">
+          <p className="text-zinc-200 text-[11px] sm:text-xs font-mono font-bold">
             ✓ Preset updated: [{THEME_CONFIGS[targetTheme].name}]
           </p>
         );
       } else {
         outputNode = (
-          <p className="text-zinc-400 text-xs font-mono">
+          <p className="text-zinc-400 text-[11px] sm:text-xs font-mono">
             Error: Preset not found. Options: charcoal, sage, midnight, monochrome.
           </p>
         );
@@ -170,18 +170,18 @@ export default function InteractiveTerminal() {
     } else if (cleanCmd === 'sudo hire') {
       soundFx.playSuccess();
       outputNode = (
-        <div className="p-3 rounded bg-zinc-900 border border-zinc-700 text-zinc-200 text-xs font-mono space-y-1">
+        <div className="p-2.5 sm:p-3 rounded bg-zinc-900 border border-zinc-700 text-zinc-200 text-[11px] sm:text-xs font-mono space-y-1">
           <p className="font-bold flex items-center gap-1.5 text-zinc-100">
-            <Sparkles className="w-4 h-4 text-zinc-300" />
+            <Sparkles className="w-4 h-4 text-zinc-300 shrink-0" />
             DIRECT RECRUITER CHANNEL ACTIVATED
           </p>
           <p>Candidate Contact: {PORTFOLIO_DATA.personal.email}</p>
-          <p className="text-[11px] text-zinc-400">Available immediately for software engineering internships and junior roles.</p>
+          <p className="text-[10px] sm:text-[11px] text-zinc-400">Available immediately for software engineering roles & internships.</p>
         </div>
       );
     } else {
       outputNode = (
-        <p className="text-zinc-400 text-xs font-mono">
+        <p className="text-zinc-400 text-[11px] sm:text-xs font-mono">
           command not found: {cleanCmd}. Type <span className="text-zinc-200 font-bold underline">help</span> for available commands.
         </p>
       );
@@ -205,26 +205,26 @@ export default function InteractiveTerminal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="w-full max-w-3xl rounded-2xl bg-zinc-950 border border-zinc-800 shadow-2xl overflow-hidden flex flex-col h-[500px] max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="w-full max-w-3xl rounded-2xl bg-zinc-950 border border-zinc-800 shadow-2xl overflow-hidden flex flex-col h-[85vh] sm:h-[500px]">
         {/* Header Bar */}
-        <div className="px-4 py-3 bg-zinc-900 border-b border-zinc-800 flex items-center justify-between select-none">
+        <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-900 border-b border-zinc-800 flex items-center justify-between select-none">
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-1.5">
               <span className="w-3 h-3 rounded-full bg-zinc-700 inline-block cursor-pointer hover:bg-red-500 transition-colors" onClick={() => setTerminalOpen(false)} />
               <span className="w-3 h-3 rounded-full bg-zinc-700 inline-block" />
               <span className="w-3 h-3 rounded-full bg-zinc-700 inline-block" />
             </div>
-            <div className="h-4 w-[1px] bg-zinc-800 mx-2" />
-            <div className="flex items-center gap-1.5 text-xs font-mono text-zinc-300">
-              <TerminalIcon className="w-4 h-4" />
-              <span>tejas@portfolio:~ (zsh)</span>
+            <div className="h-4 w-[1px] bg-zinc-800 mx-1.5" />
+            <div className="flex items-center gap-1.5 text-[11px] sm:text-xs font-mono text-zinc-300 truncate">
+              <TerminalIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0" />
+              <span className="truncate">tejas@portfolio:~ (zsh)</span>
             </div>
           </div>
 
           <div className="flex items-center gap-2">
             <span className="hidden sm:inline text-[10px] font-mono text-zinc-400 bg-zinc-800 px-2 py-0.5 rounded border border-zinc-700">
-              Active: {THEME_CONFIGS[theme].name}
+              {THEME_CONFIGS[theme].name}
             </span>
             <button
               onClick={() => setTerminalOpen(false)}
@@ -236,28 +236,28 @@ export default function InteractiveTerminal() {
         </div>
 
         {/* Output */}
-        <div className="flex-1 p-4 overflow-y-auto font-mono text-xs space-y-4 bg-zinc-950/95 scrollbar-thin">
+        <div className="flex-1 p-3 sm:p-4 overflow-y-auto font-mono text-xs space-y-3.5 bg-zinc-950/95 scrollbar-thin">
           {history.map((item) => (
             <div key={item.id} className="space-y-1">
-              <div className="flex items-center gap-2 text-zinc-400">
-                <span className="text-zinc-500 font-bold">➜</span>
-                <span className="text-zinc-400 font-bold">~</span>
-                <span className="text-zinc-100 font-semibold">{item.command}</span>
+              <div className="flex items-center gap-1.5 sm:gap-2 text-zinc-400">
+                <span className="text-zinc-500 font-bold shrink-0">➜</span>
+                <span className="text-zinc-400 font-bold shrink-0">~</span>
+                <span className="text-zinc-100 font-semibold truncate">{item.command}</span>
               </div>
-              <div className="pl-4">{item.output}</div>
+              <div className="pl-3 sm:pl-4">{item.output}</div>
             </div>
           ))}
           <div ref={endRef} />
         </div>
 
         {/* Suggestion Bar */}
-        <div className="px-4 py-2 bg-zinc-900/80 border-t border-zinc-800 flex items-center gap-2 overflow-x-auto text-[11px] font-mono">
+        <div className="px-3 sm:px-4 py-2 bg-zinc-900/90 border-t border-zinc-800 flex items-center gap-1.5 overflow-x-auto text-[10px] sm:text-[11px] font-mono">
           <span className="text-zinc-500 uppercase tracking-wider text-[9px] shrink-0">Prompts:</span>
           {['help', 'skills', 'projects', 'contact', 'theme charcoal', 'sudo hire', 'clear'].map((prompt) => (
             <button
               key={prompt}
               onClick={() => handleCommand(prompt)}
-              className="px-2.5 py-1 rounded bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-300 shrink-0 transition-all"
+              className="px-2 py-0.5 sm:px-2.5 sm:py-1 rounded bg-zinc-800 hover:bg-zinc-700 border border-zinc-700 text-zinc-300 shrink-0 transition-all text-[10px] sm:text-xs"
             >
               {prompt}
             </button>
@@ -265,21 +265,21 @@ export default function InteractiveTerminal() {
         </div>
 
         {/* Input */}
-        <div className="px-4 py-3 bg-zinc-900 border-t border-zinc-800 flex items-center gap-2">
-          <span className="text-zinc-500 font-bold font-mono">➜</span>
-          <span className="text-zinc-400 font-bold font-mono">~</span>
+        <div className="px-3 sm:px-4 py-2.5 sm:py-3 bg-zinc-900 border-t border-zinc-800 flex items-center gap-2">
+          <span className="text-zinc-500 font-bold font-mono shrink-0">➜</span>
+          <span className="text-zinc-400 font-bold font-mono shrink-0">~</span>
           <input
             ref={inputRef}
             type="text"
             value={inputVal}
             onChange={(e) => setInputVal(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Type command... (e.g. help, skills, projects)"
-            className="flex-1 bg-transparent border-none outline-none text-xs font-mono text-white placeholder-zinc-500 focus:ring-0"
+            placeholder="Type command... (e.g. help, skills)"
+            className="flex-1 bg-transparent border-none outline-none text-xs font-mono text-white placeholder-zinc-500 focus:ring-0 min-w-0"
           />
           <button
             onClick={() => handleCommand(inputVal)}
-            className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors"
+            className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 transition-colors shrink-0"
           >
             <CornerDownLeft className="w-3.5 h-3.5" />
           </button>

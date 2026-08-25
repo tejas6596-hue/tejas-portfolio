@@ -68,28 +68,34 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<ThemeMode>('charcoal');
-  const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
+  const [theme, setThemeState] = useState<ThemeMode>(() => {
+    if (typeof window !== 'undefined') {
+      const savedTheme = localStorage.getItem('app-theme') as ThemeMode;
+      if (savedTheme && THEME_CONFIGS[savedTheme]) {
+        return savedTheme;
+      }
+    }
+    return 'charcoal';
+  });
+
+  const [soundEnabled, setSoundEnabled] = useState<boolean>(() => {
+    if (typeof window !== 'undefined') {
+      const savedSound = localStorage.getItem('app-sound');
+      if (savedSound !== null) return savedSound === 'true';
+    }
+    return true;
+  });
+
   const [terminalOpen, setTerminalOpen] = useState<boolean>(false);
   const [mounted, setMounted] = useState<boolean>(false);
 
   useEffect(() => {
-    setMounted(true);
-    const savedTheme = localStorage.getItem('app-theme') as ThemeMode;
-    if (savedTheme && THEME_CONFIGS[savedTheme]) {
-      setThemeState(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else {
-      document.documentElement.setAttribute('data-theme', 'charcoal');
-    }
-
-    const savedSound = localStorage.getItem('app-sound');
-    if (savedSound !== null) {
-      const isEnabled = savedSound === 'true';
-      setSoundEnabled(isEnabled);
-      soundFx.setEnabled(isEnabled);
-    }
-  }, []);
+    document.documentElement.setAttribute('data-theme', theme);
+    soundFx.setEnabled(soundEnabled);
+    requestAnimationFrame(() => {
+      setMounted(true);
+    });
+  }, [theme, soundEnabled]);
 
   const setTheme = (newTheme: ThemeMode) => {
     setThemeState(newTheme);

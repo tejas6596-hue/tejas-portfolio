@@ -3,26 +3,32 @@
 import { useState } from 'react';
 import { PORTFOLIO_DATA, Certification } from '@/data/portfolio';
 import CertificateModal from './CertificateModal';
-import { Award, ArrowRight, ShieldCheck, ExternalLink } from 'lucide-react';
+import { Award, ArrowRight, ShieldCheck } from 'lucide-react';
+import { soundFx } from './SoundEffects';
 
 export default function Certifications() {
   const [selectedCert, setSelectedCert] = useState<Certification | null>(null);
 
-  return (
-    <section id="certifications" className="py-24 relative z-10 border-t border-gray-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  const handleOpenCert = (cert: Certification) => {
+    soundFx.playClick();
+    setSelectedCert(cert);
+  };
 
+  return (
+    <section id="certifications" className="py-24 relative z-10 border-t border-zinc-800/40">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-950/40 border border-blue-500/20 text-xs font-semibold uppercase tracking-wider text-blue-400">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full theme-pill text-xs font-mono font-bold uppercase tracking-wider">
             <Award className="w-3.5 h-3.5" />
             <span>Professional Certifications</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-extrabold text-white tracking-tight">
-            Verified Cloud & Technical <span className="gradient-text">Credentials</span>
+          <h2 className="text-4xl sm:text-5xl font-black text-white tracking-tight">
+            Verified Cloud & Technical <span className="theme-heading">Credentials</span>
           </h2>
-          <p className="text-gray-400 font-light text-base sm:text-lg leading-relaxed">
-            Industry-recognized credentials in Cloud Computing, AWS, IBM Cloud, and Programming.
+          <p className="text-zinc-400 font-light text-base sm:text-lg leading-relaxed">
+            Industry-recognized credentials in Cloud Computing, AWS Foundations, IBM Cloud Architecture, and Core Programming.
           </p>
         </div>
 
@@ -31,30 +37,27 @@ export default function Certifications() {
           {PORTFOLIO_DATA.certifications.map((cert) => (
             <div
               key={cert.id}
-              onClick={() => setSelectedCert(cert)}
-              className="glass-card rounded-3xl p-7 flex flex-col justify-between space-y-6 hover:border-blue-500/40 transition-all duration-300 cursor-pointer group hover:-translate-y-1 relative overflow-hidden"
+              onClick={() => handleOpenCert(cert)}
+              className="theme-card rounded-3xl p-7 flex flex-col justify-between space-y-6 hover:-translate-y-1 transition-all duration-300 cursor-pointer group relative overflow-hidden"
             >
-              {/* Subtle accent light */}
-              <div className="absolute -top-12 -right-12 w-28 h-28 bg-blue-500/10 rounded-full blur-xl pointer-events-none group-hover:bg-blue-500/20 transition-colors" />
-
               <div className="space-y-4">
-
+                
                 {/* Header Badge */}
                 <div className="flex items-center justify-between">
-                  <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-xs font-semibold text-blue-400">
+                  <span className="px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-xs font-mono font-bold text-zinc-300">
                     {cert.issuer}
                   </span>
-                  <span className="text-xs text-gray-400 font-medium">
+                  <span className="text-xs text-zinc-500 font-mono">
                     {cert.year}
                   </span>
                 </div>
 
                 {/* Title */}
                 <div>
-                  <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-blue-300 transition-colors leading-snug">
+                  <h3 className="text-xl font-bold text-white tracking-tight group-hover:text-zinc-200 transition-colors leading-snug">
                     {cert.title}
                   </h3>
-                  <p className="text-xs text-gray-400 font-light mt-1">
+                  <p className="text-xs text-zinc-400 font-light mt-1">
                     {cert.subtitle}
                   </p>
                 </div>
@@ -62,10 +65,10 @@ export default function Certifications() {
               </div>
 
               {/* Card Footer Action */}
-              <div className="pt-4 border-t border-gray-800/80 flex items-center justify-between text-xs font-semibold text-blue-400 group-hover:text-blue-300">
-                <span className="flex items-center gap-1.5 text-gray-300 font-medium">
+              <div className="pt-4 border-t border-zinc-800 flex items-center justify-between text-xs font-bold text-zinc-300 group-hover:text-white">
+                <span className="flex items-center gap-1.5 text-zinc-300 font-medium">
                   <ShieldCheck className="w-4 h-4 text-emerald-400" />
-                  View Certificate
+                  View Verified Document
                 </span>
                 <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
               </div>

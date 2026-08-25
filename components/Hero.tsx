@@ -186,7 +186,7 @@ export default function Hero() {
                     fill
                     priority
                     unoptimized
-                    sizes="(max-width: 768px) 256px, 320px"
+                    sizes="(max-width: 768px) 100vw, 320px"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-80" />
